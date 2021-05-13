@@ -13377,12 +13377,12 @@ For example the recoveries feature is the "post charge off recovery"---this is o
 <b>Exploratory Data Analysis</b>
 </h2>
 <a name="ref_sec_3">
+</a>
 <p>
 I started exploring the dataset a little by making some visualization. For any textual data processing it is interesting to generate a plot covering the basic sentiment score distribution, word cloud and histograms of the name entity counts (which I will explain later in the feature engineering section).
 </p>
 
 
-</a>
 
 <figure>
 
@@ -13466,33 +13466,47 @@ I started exploring the dataset a little by making some visualization. For any t
 
 <p>Lending club has a high number of customers either in the Fully paid and or Current range. This means that the company's model of lending the money is working well for them--the money which is going out is coming back too with some interest paid</p>
 
-</section><p> <b>What is the employment history of the lenders?</b></p>
+
+<p> <b>What is the employment history of the lenders?</b></p>
 <figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-Bt5mJh6Kh2aSLhnEOZxza_SPb084TCj"alt="image_7" width="550" height="500">
 <figcaption><font size="+1"><b> Most of the lenders have the employment history of more than 10 years. </b></font></figcaption>
 </center>
 </figure>
-<p>By grouping the data with employment length shows that the lending club customers have signficant number of people who have a good employment history i.e. more than 10+ years.</p><p><b>What is the relationship between "mean" loan amount, installment and interest rate within each category?</b></p>
+<p>By grouping the data with employment length shows that the lending club customers have signficant number of people who have a good employment history i.e. more than 10+ years.</p>
+
+<p><b>What is the relationship between "mean" loan amount, installment and interest rate within each category?</b></p>
 <figure>
 <center>
 <img src="https://drive.google.com/uc?id=1f5yXzKDQeWhMmstRn450Fm6Ga79QKOzn"alt="image_7" width="550" height="400">
 <figcaption><font size="+1"><b> Bubble plot of "mean" loan amount vs mean "interest rate" features. Here the size of the bubble is related to the "mean" interest rate while the color of the bubbles represents the categories (A,B,C,D,E,F and G). </b></font></figcaption>
 </center>
 </figure>
-<p>Here I have grouped the data by grades and plotted them as bubble chart. Mean loan amount and mean installments show a linear behavior while the meant interest rate tend to grow sharply as we move from category B to G with an exception of category A which falls in between the categroy B and C.</p><p><b> At a more granular level how the interest rate is distributed within each category?</b></p><figure>
+<p>Here I have grouped the data by grades and plotted them as bubble chart. Mean loan amount and mean installments show a linear behavior while the meant interest rate tend to grow sharply as we move from category B to G with an exception of category A which falls in between the categroy B and C.</p>
+
+<p><b> At a more granular level how the interest rate is distributed within each category?</b></p>
+
+<figure>
 <center>
 <img src="https://drive.google.com/uc?id=1--vqbsXMJUCyCiJ2i13Kfe-vg8XHS6xV"alt="image_7" width="550" height="400">
 <figcaption><font size="+1"><b> Interest rate distribution within each category of lenders. </b></font></figcaption>
 </center>
-</figure><p> There is a very clear trend here among the interest within the categories $A < B < C < D$.</p><p><b>For which purpose the loan was taken?</b></p>
+</figure>
+
+<p> There is a very clear trend here among the interest within the categories $A < B < C < D$.</p>
+
+<p><b>For which purpose the loan was taken?</b></p>
 <figure>
 <center>
 <img src="https://drive.google.com/uc?id=1McN8Z7rtzWosBVpc4Rgoy3JU73ul6Wwz"alt="image_7" width="550" height="400">
 <figcaption><font size="+1"><b> The "mean" loan is the highest for the small business followed by debt consolidation and so on. </b></font></figcaption>
 </center>
 </figure>
-<p> The "mean value" of the loan is highest for the small business purpose.</p><p><b>How the median of the loan amount, interest rate and annual income is distributed accross the states?</b></p>
+<p> The "mean value" of the loan is highest for the small business purpose.</p>
+
+
+<p><b>How the median of the loan amount, interest rate and annual income is distributed accross the states?</b></p>
 <figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-7hsSNysKZfrMjID16XQNhO8gW5HTOZN"alt="image_7" width="550" height="400">
@@ -13523,32 +13537,49 @@ I started exploring the dataset a little by making some visualization. For any t
 </center>
 </figure>
 
-<p><b>How the interest rate is distributed between different categories of loan status?</b></p><figure>
+<p><b>How the interest rate is distributed between different categories of loan status?</b></p>
+
+
+<figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-OF_F4CtH_h06fP4t2mZxkyaRZB0EPwD"alt="image_7" width="550" height="400">
 <figcaption><font size="+1"><b> How the interest rate is distributed among different categories of loan status. </b></font></figcaption>
 </center>
-</figure><p>The interest rate is lower for the payers category and higher for the charged off category on an average. </p>
-<p><b>Uptill now I have plotted either the average values of the various features of the data in a variety of ways. Further to get a better estimate of the statistical features of the data I will make use of the violin plot for the interest rate on grade and states etc.</b></p><figure>
+</figure>
+
+<p>The interest rate is lower for the payers category and higher for the charged off category on an average. </p>
+<p><b>Uptill now I have plotted either the average values of the various features of the data in a variety of ways. Further to get a better estimate of the statistical features of the data I will make use of the violin plot for the interest rate on grade and states etc.</b></p>
+
+<figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-RrlPtOkH7iTCMnEorSPMZykKmXFuSEE"alt="image_7" width="550" height="400">
 <figcaption><font size="+1"><b> Violin plot of the interest among different grades of the customers.</b></font></figcaption>
 </center>
-</figure><p>Not only the grade 'A' has the minimal value of the median. The dispersion of interest is the least in category A. Clearly from the sheer interest rate point of view it is good to be in this categroy. The above plot further differentiate the data by their term period.</p><p><b>To see a rough value of the correlation between variables I will do a scatter matrix plot</b></p><figure>
+</figure>
+
+<p>Not only the grade 'A' has the minimal value of the median. The dispersion of interest is the least in category A. Clearly from the sheer interest rate point of view it is good to be in this categroy. The above plot further differentiate the data by their term period.</p>
+
+<p><b>To see a rough value of the correlation between variables I will do a scatter matrix plot</b></p>
+
+<figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-S8gZOuPqAKDQJXEWKAQB45uKk6mQVyO"alt="image_7" width="750" height="600">
 <figcaption><font size="+1"><b> Scatter plot of the various features of the data. </b></font></figcaption>
 </center>
-</figure><p>Is there are a strong monotonic relationship between interest rate and loan amount? We can explore it using Spearmans Rank correlation coefficient.
-More can be learned about it from this great resource <a href="https://statistics.laerd.com/statistical-guides/spearmans-rank-order-correlation-statistical-guide.php"> on Spearman's Rank-Order Correlation</a> Its definition is$\frac{1-6\sum d_{i}^2}{n(n^2-1)}$ here 'd' is the distance between the ranks of the data point.</p><figure>
+</figure>
+
+<p>Is there are a strong monotonic relationship between interest rate and loan amount? We can explore it using Spearmans Rank correlation coefficient.
+More can be learned about it from this great resource <a href="https://statistics.laerd.com/statistical-guides/spearmans-rank-order-correlation-statistical-guide.php"> on Spearman's Rank-Order Correlation</a> Its definition is$\frac{1-6\sum d_{i}^2}{n(n^2-1)}$ here 'd' is the distance between the ranks of the data point.</p>
+
+<figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-UIByWvKiBOqF4rhEsR6IsQ5vOJXwzb2"alt="image_7" width="550" height="400">
 <figcaption><font size="+1"><b> Computed Spearman's correlation between loan amount, installment and interest rate.</b></font></figcaption>
 </center>
-</figure><p>Very high spearman rank correlation means as we increase the rank of one the other will increase montonically. This is true for loan and installment. Means these two variables are highly correlated and increase monotonically. While the other parameters doesn't increase monotonically.</p>-->
+</figure>
 
-
-<section>
+<p>Very high spearman rank correlation means as we increase the rank of one the other will increase montonically. This is true for loan and installment. Means these two variables are highly correlated and increase monotonically. While the other parameters doesn't increase monotonically.</p>-->
+</section><section>
 <h2>
 <b>Training data development</b>
 </h2>
@@ -13604,17 +13635,25 @@ I have removed the tweets for clarity of presentation. I then computed some feat
 </center>
 </figure>
 
-<p> Further, I calculated the features based on named entity recognition like organization name, are the users talking about money, etc. The developed features needed some normalization as the scale of various attributes doesn't align together. For example price and volume has very large disparity, similarly, the count variables can be very different from the sentiment scores. Therefore, I decided to normalize the data and then visualize everything in a pair plot.</p><figure>
+<p> Further, I calculated the features based on named entity recognition like organization name, are the users talking about money, etc. The developed features needed some normalization as the scale of various attributes doesn't align together. For example price and volume has very large disparity, similarly, the count variables can be very different from the sentiment scores. Therefore, I decided to normalize the data and then visualize everything in a pair plot.</p>
+
+
+
+<figure>
 <center>
 <img src="https://drive.google.com/uc?id=1IXpsqoqBZKdfajnQ8l9bEyY6BEgoRl2E"alt="image_7" width="550" height="550">
 <figcaption><font size="+1"><b>Features based on named entity recognition. I selected ORG, PRODUCT, EVENT and MONEY entities and calculated their counts.  </b></font></figcaption>
 </center>
-</figure><figure>
+</figure>
+
+<figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-6qk--WURlqk965uCIHlVQO9_MNhPKyz"alt="image_7" width="750" height="550">
 <figcaption><font size="+1"><b>Pairplot of various normalized variables. </b></font></figcaption>
 </center>
-</figure><p> The pairplot shows some non-linear relationship between the target and features--thus it may be the case that a simple linear decision boundary may not be able to separate the two classes. Therefore, there is some (may be) incentive in using a non-linear model later on for example XgBoost. </p>
+</figure>
+
+<p> The pairplot shows some non-linear relationship between the target and features--thus it may be the case that a simple linear decision boundary may not be able to separate the two classes. Therefore, there is some (may be) incentive in using a non-linear model later on for example XgBoost. </p>
 <figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-Ceoi0M0bFeLGpNsFbBS3NWDIekQqcSd"alt="image_7" width="750" height="550">
@@ -13622,7 +13661,9 @@ I have removed the tweets for clarity of presentation. I then computed some feat
 </center>
 </figure>
 <p> To check the correlation between the variables and to weed out any variable that is highly similar to the other variable (and to the target itself), I decided to plot Pearson's correlation matrix. I decided to choose a cutoff of 0.9 i.e. any variable which is more than 90% correlated with the other variable should be dropped from the list of variables. This is to avoid overconstraining the machine learning model with any redundant feature and to avoid high variance on the testing data.</p>
-<p> I decided to drop the price and volume from the list of variable although I am going to classify the anomalies in the price data. This is because price data may not available before the actual price surge starts. This is true in the case of stock volume data too. Thus, whatever features are left are purely derived from the twitter feeds--i.e. if we can monitor the twitter and using a certain feature foresee a future jump. The various features which are developed for training and tweaking a machine learning classifier are shown below:</p><p><table border="1" class="dataframe">
+<p> I decided to drop the price and volume from the list of variable although I am going to classify the anomalies in the price data. This is because price data may not available before the actual price surge starts. This is true in the case of stock volume data too. Thus, whatever features are left are purely derived from the twitter feeds--i.e. if we can monitor the twitter and using a certain feature foresee a future jump. The various features which are developed for training and tweaking a machine learning classifier are shown below:</p>
+
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -13684,8 +13725,7 @@ I have removed the tweets for clarity of presentation. I then computed some feat
     </tr>
   </tbody>
 </table>
-&lt;/section&gt;</p>
-<section>
+</section><section>
 
 <h2>
 <b>Modeling</b>
@@ -13938,24 +13978,56 @@ However, the following measures are readily available for the classification pro
 <b>Conclusion</b>
 </h2>
 <a name="ref_sec_6">
+</a>
 <p>
 In this project, I tried to classify the stock price manipulations by extracting signals from the Twitter feeds. The idea was to first price anomalies and then generate signals from Twitter feeds to see the effect them on the stock price. If the price anomalies are captured correctly then perhaps twitter can tell a lot more about stock price manipulations. In the future, I will try to use more sophisticated feature engineering to generate some more interesting features in conjunction with some advanced machine learning models.
 </p>
-</a>
 </section>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="o">%%</span><span class="n">shell</span>
-<span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">Project_1_report</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span> <span class="o">/</span><span class="n">content</span><span class="o">/</span><span class="n">Copy_of_Report_2_project</span><span class="o">.</span><span class="n">ipynb</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[NbConvertApp] Converting notebook /content/Copy_of_Report_2_project.ipynb to html
+[NbConvertApp] Writing 311493 bytes to /content/Copy_of_Report_2_project.html
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre></pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
