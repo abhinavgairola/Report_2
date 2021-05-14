@@ -13159,7 +13159,7 @@ For this I used the typical data science methodology <a href="https://aiden-data
 <a name="ref_sec_2">
 </a>
 <p>
-The major challenge in the current project is to find the appropriate data for the whole data science pipeline. Since there was no standalone data for the current work. I decided to create my own. The first decision which I took towards creating my dataset is to look for stocks that are vulnerable to manipulations. To find such stocks can be tricky as the companies trading on the major stock exchanges are governed by tighter regulations or to put it in another way they are less risky. Therefore, I decided to look for more risky companies. I searched on the <a href="https://www.sec.gov/spotlight/microcap-fraud.shtml">security and exchange commission and found that microcap stocks</a> trading on the  "OTC" markets are the most eligible candidates for this. I downloaded the <a href="https://www.otcmarkets.com/research/stock-screener"> OTC market screener</a> and using the pandas data reader module started downloading the historical stock prices (these are by default not intraday price movements). The downloaded data has a number of attributes like "Open", "Close", "High", "Low", "Adjusted Close" and <a href="https://www.investopedia.com/terms/v/volume.asp">"Volume"</a> for a particular stock ticker. I computed an average price for each day by simply averaging the four prices $$ Average~Price=\frac{Open+Close+High+Low}{4} $$. I also kept the trade volume in the data set for the stock prices. The data frame for the average stock prices looks like as shown. 
+The major challenge in the current project is to find the appropriate data for the whole data science pipeline. Since there was no standalone data for the current work. I decided to create my own. The first decision which I took towards creating my dataset is to look for stocks that are vulnerable to manipulations. To find such stocks can be tricky as the companies trading on the major stock exchanges are governed by tighter regulations or to put it in another way they are less risky. Therefore, I decided to look for more risky companies. I searched on the <a href="https://www.sec.gov/spotlight/microcap-fraud.shtml">security and exchange commission and found that microcap stocks</a> trading on the  "OTC" markets are the most eligible candidates for this. I downloaded the <a href="https://www.otcmarkets.com/research/stock-screener"> OTC market screener</a> and using the pandas data reader module downloaded the historical stock prices (these are by default not intraday price movements). The price data has a number of attributes like "Open", "Close", "High", "Low", "Adjusted Close" and <a href="https://www.investopedia.com/terms/v/volume.asp">"Volume"</a> for a particular stock ticker. I computed an average price for each day by simply averaging the four prices $$ Average~Price=\frac{Open+Close+High+Low}{4} $$. I also kept the trade volume in the data set for the stock prices. The data frame for the average stock prices looks like as shown. 
 </p>
 
 
@@ -13653,7 +13653,7 @@ I have removed the tweets for clarity of presentation. I then computed some feat
 </center>
 </figure>
 
-<p> The pairplot shows some non-linear relationship between the target and features--thus it may be the case that a simple linear decision boundary may not be able to separate the two classes. Therefore, there is some (may be) incentive in using a non-linear model later on for example XgBoost. </p>
+<p> The pairplot shows some non-linear relationship between the target and features--thus it may be the case that a simple linear decision boundary may not be able to separate the two classes (<b>although I also tried polynomial features with the logistic regression</b>). Therefore, there is some incentive in using a non-linear model later on for example XgBoost. </p>
 <figure>
 <center>
 <img src="https://drive.google.com/uc?id=1-Ceoi0M0bFeLGpNsFbBS3NWDIekQqcSd"alt="image_7" width="750" height="550">
@@ -13926,10 +13926,19 @@ However, the following measures are readily available for the classification pro
 <figure>
 <center>
  <img src="https://drive.google.com/uc?id=1-cwVE9Ew21bQ-OxN9gVFFHtQJA1V75vo"alt="image_7" width="450"/>
-<figcaption><font size="+1"><b> Receiver operating characteristic (ROC) curve for a tuned (hyperparameter tunning) logistic regression model. </b></font></figcaption>
+<figcaption><font size="+1"><b> Receiver operating characteristic (ROC) curve for a tuned (hyperparameter tunning) logistic regression model (with linear combination of features). </b></font></figcaption>
 </center>
 </figure>
-<p>To explain the model and to see the partial effect of features on the model performance I used Shap values---which exactly does the same.</p>
+
+
+<figure>
+<center>
+ <img src="https://drive.google.com/uc?id=17qbuiQXNmz8im8O7SbxDR_EUyZXGRO4t"alt="image_7" width="450"/>
+<figcaption><font size="+1"><b> Receiver operating characteristic (ROC) curve for a tuned (hyperparameter tunning) logistic regression model (with polynomial combination of features). </b></font></figcaption>
+</center>
+</figure>
+<p>There is a slight increase of the AUC when I used polynomial  (\( 4^{th} \)degree) combination of features in logistic regression.</p>
+<p>To explain the model and to see the partial effect of features on the model performance I used Shap values for the logistic regression with linear combination of features.</p>
 <center>
 
 <figure>
@@ -13980,7 +13989,7 @@ However, the following measures are readily available for the classification pro
 <a name="ref_sec_6">
 </a>
 <p>
-In this project, I tried to classify the stock price manipulations by extracting signals from the Twitter feeds. The idea was to first price anomalies and then generate signals from Twitter feeds to see the effect them on the stock price. If the price anomalies are captured correctly then perhaps twitter can tell a lot more about stock price manipulations. In the future, I will try to use more sophisticated feature engineering to generate some more interesting features in conjunction with some advanced machine learning models.
+In this project, I tried to classify the stock price manipulations by extracting signals from the Twitter feeds. The idea was to first look for price anomalies and then generate signals from Twitter feeds to see the effect they have on the stock price. If the price anomalies are captured correctly then perhaps twitter can tell a lot more about stock price manipulations. In the future, I will try to use more sophisticated feature engineering to generate some interesting features in conjunction with some advanced machine learning models.
 </p>
 </section>
 </div>
@@ -13988,7 +13997,7 @@ In this project, I tried to classify the stock price manipulations by extracting
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="o">%%</span><span class="n">shell</span>
@@ -14010,14 +14019,14 @@ In this project, I tried to classify the stock price manipulations by extracting
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook /content/Copy_of_Report_2_project.ipynb to html
-[NbConvertApp] Writing 311493 bytes to /content/Copy_of_Report_2_project.html
+[NbConvertApp] Writing 311500 bytes to /content/Copy_of_Report_2_project.html
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[&nbsp;]:</div>
 
 
 
